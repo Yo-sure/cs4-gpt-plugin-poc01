@@ -1,0 +1,164 @@
+{
+  "cs4-gpt-plugin-poc01-tariff": [
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "handlingFee"},
+          "serviceType": {"S": "USLGB"},
+          "baseCharges": {"N": "44"},
+          "additionalCharges": {"N": "44"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "documentCharge"},
+          "serviceType": {"S": "CNSHA"},
+          "baseCharges": {"N": "200"},
+          "additionalCharges": {"N": "6"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "documentCharge"},
+          "serviceType": {"S": "DEHAM"},
+          "baseCharges": {"N": "250"},
+          "additionalCharges": {"N": "5"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "documentCharge"},
+          "serviceType": {"S": "KRPUS"},
+          "baseCharges": {"N": "220"},
+          "additionalCharges": {"N": "2"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "documentCharge"},
+          "serviceType": {"S": "NLRTM"},
+          "baseCharges": {"N": "230"},
+          "additionalCharges": {"N": "3"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "documentCharge"},
+          "serviceType": {"S": "USLGB"},
+          "baseCharges": {"N": "240"},
+          "additionalCharges": {"N": "4"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "amsCharge"},
+          "serviceType": {"S": "CNSHA"},
+          "baseCharges": {"N": "70"},
+          "additionalCharges": {"N": "0"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "amsCharge"},
+          "serviceType": {"S": "DEHAM"},
+          "baseCharges": {"N": "75"},
+          "additionalCharges": {"N": "0"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "amsCharge"},
+          "serviceType": {"S": "KRPUS"},
+          "baseCharges": {"N": "72"},
+          "additionalCharges": {"N": "0"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "amsCharge"},
+          "serviceType": {"S": "NLRTM"},
+          "baseCharges": {"N": "73"},
+          "additionalCharges": {"N": "0"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "amsCharge"},
+          "serviceType": {"S": "USLGB"},
+          "baseCharges": {"N": "74"},
+          "additionalCharges": {"N": "0"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "containerSealCharge"},
+          "serviceType": {"S": "CNSHA"},
+          "baseCharges": {"N": "1"},
+          "additionalCharges": {"N": "1"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "containerSealCharge"},
+          "serviceType": {"S": "DEHAM"},
+          "baseCharges": {"N": "2"},
+          "additionalCharges": {"N": "1"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "containerSealCharge"},
+          "serviceType": {"S": "KRPUS"},
+          "baseCharges": {"N": "1"},
+          "additionalCharges": {"N": "1"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "containerSealCharge"},
+          "serviceType": {"S": "NLRTM"},
+          "baseCharges": {"N": "2"},
+          "additionalCharges": {"N": "1"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "containerSealCharge"},
+          "serviceType": {"S": "USLGB"},
+          "baseCharges": {"N": "2"},
+          "additionalCharges": {"N": "1"}
+        }
+      }
+    }
+  ]
+}

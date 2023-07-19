@@ -1,7 +1,12 @@
 # package directories
 node_modules
 jspm_packages
+
+# IDE direcotries
 .idea/
 
 # Serverless directories
 .serverless
+
+# eslint configurations
+.eslintrc.json

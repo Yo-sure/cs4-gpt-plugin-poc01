@@ -1,0 +1,224 @@
+{
+  "cs4-gpt-plugin-poc01-tariff": [
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "freightCharge"},
+          "serviceType": {"S": "ocean"},
+          "baseCharges": {"N": "1000"},
+          "additionalCharges": {"N": "50"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "freightCharge"},
+          "serviceType": {"S": "air"},
+          "baseCharges": {"N": "2000"},
+          "additionalCharges": {"N": "100"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "freightCharge"},
+          "serviceType": {"S": "express"},
+          "baseCharges": {"N": "200"},
+          "additionalCharges": {"N": "10"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "wharfagePortCharge"},
+          "serviceType": {"S": "CNSHA"},
+          "baseCharges": {"N": "1000"},
+          "additionalCharges": {"N": "10"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "wharfagePortCharge"},
+          "serviceType": {"S": "DEHAM"},
+          "baseCharges": {"N": "1500"},
+          "additionalCharges": {"N": "15"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "wharfagePortCharge"},
+          "serviceType": {"S": "KRPUS"},
+          "baseCharges": {"N": "800"},
+          "additionalCharges": {"N": "12"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "wharfagePortCharge"},
+          "serviceType": {"S": "NLRTM"},
+          "baseCharges": {"N": "1300"},
+          "additionalCharges": {"N": "13"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "wharfagePortCharge"},
+          "serviceType": {"S": "USLGB"},
+          "baseCharges": {"N": "1400"},
+          "additionalCharges": {"N": "14"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "truckFreightCharge"},
+          "serviceType": {"S": "CNSHA"},
+          "baseCharges": {"N": "200"},
+          "additionalCharges": {"N": "20"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "truckFreightCharge"},
+          "serviceType": {"S": "DEHAM"},
+          "baseCharges": {"N": "250"},
+          "additionalCharges": {"N": "25"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "truckFreightCharge"},
+          "serviceType": {"S": "KRPUS"},
+          "baseCharges": {"N": "150"},
+          "additionalCharges": {"N": "22"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "truckFreightCharge"},
+          "serviceType": {"S": "NLRTM"},
+          "baseCharges": {"N": "230"},
+          "additionalCharges": {"N": "23"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "truckFreightCharge"},
+          "serviceType": {"S": "USLGB"},
+          "baseCharges": {"N": "240"},
+          "additionalCharges": {"N": "24"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "terminalHandlingCharge"},
+          "serviceType": {"S": "CNSHA"},
+          "baseCharges": {"N": "30"},
+          "additionalCharges": {"N": "30"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "terminalHandlingCharge"},
+          "serviceType": {"S": "DEHAM"},
+          "baseCharges": {"N": "35"},
+          "additionalCharges": {"N": "35"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "terminalHandlingCharge"},
+          "serviceType": {"S": "KRPUS"},
+          "baseCharges": {"N": "24"},
+          "additionalCharges": {"N": "32"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "terminalHandlingCharge"},
+          "serviceType": {"S": "NLRTM"},
+          "baseCharges": {"N": "33"},
+          "additionalCharges": {"N": "33"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "terminalHandlingCharge"},
+          "serviceType": {"S": "USLGB"},
+          "baseCharges": {"N": "34"},
+          "additionalCharges": {"N": "34"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "handlingFee"},
+          "serviceType": {"S": "CNSHA"},
+          "baseCharges": {"N": "40"},
+          "additionalCharges": {"N": "40"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "handlingFee"},
+          "serviceType": {"S": "DEHAM"},
+          "baseCharges": {"N": "45"},
+          "additionalCharges": {"N": "45"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "handlingFee"},
+          "serviceType": {"S": "KRPUS"},
+          "baseCharges": {"N": "35"},
+          "additionalCharges": {"N": "40"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "tariffKey": {"S": "handlingFee"},
+          "serviceType": {"S": "NLRTM"},
+          "baseCharges": {"N": "43"},
+          "additionalCharges": {"N": "43"}
+        }
+      }
+    }
+  ]
+}
