@@ -1,5 +1,5 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 const AWS = require('aws-sdk');
+const _ = require('lodash');
 const {
   DISTANCE_LOOKUP_TABLE, REQUIRED_FIELDS, CONSTRAINTS, PROMOTION_CODE,
 } = require('./constants-quote');
@@ -124,43 +124,38 @@ async function calculateQuote(requestBody) {
   return quote;
 }
 
-// eslint-disable-next-line default-param-last
-function inspectAndValidateFields(body, fieldPath = [], validator) {
-  const violations = [];
-
-  Object.entries(body).forEach(([key, value]) => {
-    const newFieldPath = fieldPath.concat(key).join('.');
-
-    if (typeof value === 'object' && value !== null) {
-      // 값이 객체인 경우, 재귀적으로 필드를 검사합니다.
-      violations.push(...inspectAndValidateFields(value, newFieldPath.split('.'), validator));
-    } else {
-      const violation = validator(newFieldPath, value);
-      if (violation) {
-        violations.push(violation);
-      }
-    }
-  });
-
-  return violations;
-}
-
 function validateConstraints(body) {
-  return inspectAndValidateFields(body, [], (fieldPath, value) => {
-    if (CONSTRAINTS[fieldPath] && !CONSTRAINTS[fieldPath].includes(value)) {
-      return fieldPath;
+  const constraintViolations = [];
+
+  Object.keys(CONSTRAINTS).forEach((fieldPath) => {
+    const value = _.get(body, fieldPath);
+    const constraints = CONSTRAINTS[fieldPath];
+
+    if (value !== undefined && constraints && !constraints.includes(value)) {
+      // 값이 제약사항을 위반하는 경우, 제약사항 위반 목록에 추가합니다.
+      constraintViolations.push({
+        field: fieldPath,
+        validValues: constraints,
+      });
     }
-    return null;
   });
+
+  return constraintViolations;
 }
 
 function validateRequiredFields(body) {
-  return inspectAndValidateFields(body, [], (fieldPath, value) => {
-    if (REQUIRED_FIELDS.has(fieldPath) && (value === undefined || value === '')) {
-      return fieldPath;
+  const missingFields = [];
+
+  REQUIRED_FIELDS.forEach((field) => {
+    const value = _.get(body, field);
+
+    if (value === undefined || value === '') {
+      // 필수 필드가 누락되었거나 빈 문자열인 경우, 누락된 필드 목록에 추가합니다.
+      missingFields.push(field);
     }
-    return null;
   });
+
+  return missingFields;
 }
 
 module.exports.handler = async (event) => {
@@ -198,13 +193,23 @@ module.exports.handler = async (event) => {
   } else if (requiredFieldEmpty.length === 0 && constraintViolations.length === 0) {
     // 누락된 필수값이 없다면, 견적을 계산하여 반환합니다.
     const quote = await calculateQuote(requestBody);
-    response = {
-      statusCode: 200,
-      body: JSON.stringify({
-        message: 'Quote created successfully',
-        quote,
-      }),
-    };
+    try {
+      response = {
+        statusCode: 200,
+        body: JSON.stringify({
+          message: 'Quote created successfully',
+          quote,
+        }),
+      };
+    } catch (err) {
+      response = {
+        statusCode: 500,
+        body: JSON.stringify({
+          message: 'An error occurred while calculating the quote.',
+          error: err.message,
+        }),
+      };
+    }
   }
 
   return response;

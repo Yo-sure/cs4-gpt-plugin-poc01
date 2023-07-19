@@ -54,8 +54,6 @@ const CONSTRAINTS = Object.freeze({
   'destinationInfo.destinationTruckingServiceYn': ['Y', 'N'],
   'cargoInfo.containerType': ['20FTNormalDry', '40FTNormalDry', '40FTHighCubic'],
   'cargoInfo.dangerousGoodsYn': ['Y', 'N'],
-  'customClearanceService.exportYn': ['Y', 'N'],
-  'customClearanceService.importYn': ['Y', 'N'],
   'additionalOptions.labelingServiceYn': ['Y', 'N'],
   'additionalOptions.rePackingServiceYn': ['Y', 'N'],
 });
