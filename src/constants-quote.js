@@ -53,13 +53,15 @@ const CONSTRAINTS = Object.freeze({
   'destinationInfo.destination': ['CNSHA', 'DEHAM', 'KRPUS', 'NLRTM', 'USLGB'],
   'destinationInfo.destinationTruckingServiceYn': ['Y', 'N'],
   'cargoInfo.containerType': ['20FTNormalDry', '40FTNormalDry', '40FTHighCubic'],
+  'cargoInfo.commodityType': ['Furniture', 'HomeAppliance', 'ConstructionMaterials', 'Semiconductor', 'Others'],
   'cargoInfo.dangerousGoodsYn': ['Y', 'N'],
   'additionalOptions.labelingServiceYn': ['Y', 'N'],
   'additionalOptions.rePackingServiceYn': ['Y', 'N'],
 });
 
 const PROMOTION_CODE = Object.freeze({
-  Tada: 200000,
+  Tada: 100000,
+  Ragna: 500000,
   Neo: 1000000,
 });
 

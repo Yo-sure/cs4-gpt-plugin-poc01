@@ -46,7 +46,7 @@ function calculateWithTariff(requestBody, tariffInfo) {
   const originHandling = originChargeInfo.find((item) => item.tariffKey === 'handlingFee');
   const originDocument = originChargeInfo.find((item) => item.tariffKey === 'documentCharge');
   const originAms = originChargeInfo.find((item) => item.tariffKey === 'amsCharge');
-  const originSeal = (additionalOptions.labelServiceYn === 'Y' || additionalOptions.repackingServiceYn === 'Y') ? originChargeInfo.find((item) => item.tariffKey === 'containerSealCharge') : 0;
+  const originSeal = (additionalOptions?.labelServiceYn === 'Y' || additionalOptions?.repackingServiceYn === 'Y') ? originChargeInfo.find((item) => item.tariffKey === 'containerSealCharge') : 0;
 
   if (cargoInfo.dangerousGoodsYn === 'Y') originHandling.dangerousGoods = true;
 
@@ -68,7 +68,7 @@ function calculateWithTariff(requestBody, tariffInfo) {
   );
 
   const destinationWharfage = destinationChargeInfo.find((item) => item.tariffKey === 'wharfagePortCharge');
-  const destinationTruck = destinationChargeInfo.destinationTruckingServiceYn === 'Y' ? destinationChargeInfo.find((item) => item.tariffKey === 'truckFreightCharge') : 0;
+  const destinationTruck = destinationInfo.destinationTruckingServiceYn === 'Y' ? destinationChargeInfo.find((item) => item.tariffKey === 'truckFreightCharge') : 0;
   const destinationTerminal = destinationChargeInfo.find((item) => item.tariffKey === 'terminalHandlingCharge');
   const destinationHandling = destinationChargeInfo.find((item) => item.tariffKey === 'handlingFee');
   const destinationDocument = destinationChargeInfo.find((item) => item.tariffKey === 'documentCharge');
