@@ -1,0 +1,60 @@
+{
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string",
+      "description": "Error message."
+    },
+    "additionalInfo": {
+      "type": "object",
+      "properties": {
+        "requiredFieldEmpty": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "field": {
+                "type": "string",
+                "description": "The name of the field that is missing."
+              },
+              "validValues": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "The valid values for the field."
+              }
+            },
+            "required": [ "field", "validValues" ]
+          }
+        },
+        "constraintViolations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "field": {
+                "type": "string",
+                "description": "The name of the field that violated a constraint."
+              },
+              "validValues": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "The valid values for the field."
+              }
+            },
+            "required": [ "field", "validValues" ]
+          }
+        }
+      },
+      "required": [ "requiredFieldEmpty", "constraintViolations" ]
+    },
+    "EXTRA_INFORMATION_TO_ASSISTANT": {
+      "type": "string",
+      "description": "Extra instructions for the assistant."
+    }
+  },
+  "required": [ "message", "additionalInfo", "EXTRA_INFORMATION_TO_ASSISTANT" ]
+}

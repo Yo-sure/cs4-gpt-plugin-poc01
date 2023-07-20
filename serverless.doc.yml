@@ -1,0 +1,49 @@
+documentation:
+  version: '1.0'
+  title: GPT Plugin API for Logistics Services
+  description: >
+    This API, leveraging GPT, facilitates logistics services by understanding user needs and providing suitable solutions. 
+    It generates quotes, allows direct reservations, and streamlines logistics operations, 
+    making it an essential tool for businesses and individuals.
+  models:
+    - name: "LogisticsServiceRequest"
+      description: "A logistics service request object"
+      contentType: "application/json"
+      schema: ${file(models/LogisticsServiceRequest.json)}
+    - name: "SuccessfulResponse"
+      description: "A successful response object"
+      contentType: "application/json"
+      schema: ${file(models/SuccessfulResponse.json)}
+    - name: "FailedResponse"
+      description: "A failed response object"
+      contentType: "application/json"
+      schema: ${file(models/FailedResponse.json)}
+
+endpoints:
+  gpt-interface:
+    summary: Interact with GPT for logistics quote and booking
+    description: >
+      This endpoint interacts with GPT to provide logistics services, including obtaining quotes and making bookings. 
+      It processes user input and returns context-appropriate responses, such as specific shipping quotes, shipment bookings, 
+      or answers to logistics queries.
+    tags:
+      - GPT
+      - Logistics
+      - Quote
+      - Booking
+    operationId: postGptInterface
+    requestBody:
+      description: "A logistics service request object"
+    requestModels:
+      application/json: "LogisticsServiceRequest"
+    methodResponses:
+      - statusCode: 200
+        responseBody:
+          description: "Successful Response"
+        responseModels:
+          application/json: "SuccessfulResponse"
+      - statusCode: 400
+        responseBody:
+          description: "Failed Response"
+        responseModels:
+          application/json: "FailedResponse"

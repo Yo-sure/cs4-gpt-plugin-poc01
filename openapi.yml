@@ -1,0 +1,340 @@
+openapi: 3.0.0
+components:
+  schemas:
+    LogisticsServiceRequest:
+      type: object
+      properties:
+        service:
+          type: string
+          description: 'The type of service. Must be one of ''air'', ''ocean'', ''express''.'
+          enum:
+            - air
+            - ocean
+            - express
+        originInfo:
+          type: object
+          properties:
+            origin:
+              type: string
+              description: The origin port or city.
+              enum:
+                - CNSHA
+                - DEHAM
+                - KRPUS
+                - NLRTM
+                - USLGB
+            departureRequestDate:
+              type: string
+              format: date
+              description: The requested departure date.
+            originTruckingServiceYn:
+              type: string
+              description: >-
+                Whether trucking service at origin is required. Must be 'Y' or
+                'N'.
+              enum:
+                - 'Y'
+                - 'N'
+          required:
+            - origin
+            - departureRequestDate
+            - originTruckingServiceYn
+        destinationInfo:
+          type: object
+          properties:
+            destination:
+              type: string
+              description: The destination port or city.
+              enum:
+                - CNSHA
+                - DEHAM
+                - KRPUS
+                - NLRTM
+                - USLGB
+                - others
+            destinationTruckingServiceYn:
+              type: string
+              description: >-
+                Whether trucking service at destination is required. Must be 'Y'
+                or 'N'.
+              enum:
+                - 'Y'
+                - 'N'
+          required:
+            - destination
+            - destinationTruckingServiceYn
+        cargoInfo:
+          type: object
+          properties:
+            containerType:
+              type: string
+              description: >-
+                The type of container. Must be one of '20FTNormalDry',
+                '40FTNormalDry', '40FTHighCubic'.
+              enum:
+                - 20FTNormalDry
+                - 40FTNormalDry
+                - 40FTHighCubic
+            quantity:
+              type: number
+              description: The quantity of containers.
+            commodityType:
+              type: string
+              description: >-
+                The type of commodity. Must be one of 'Furniture',
+                'HomeAppliance', 'ConstructionMaterials', 'Semiconductor',
+                'Others'.
+              enum:
+                - Furniture
+                - HomeAppliance
+                - ConstructionMaterials
+                - Semiconductor
+                - Others
+            dangerousGoodsYn:
+              type: string
+              description: Whether the goods are dangerous. Must be 'Y' or 'N'.
+              enum:
+                - 'Y'
+                - 'N'
+          required:
+            - containerType
+            - quantity
+            - commodityType
+            - dangerousGoodsYn
+        additionalOptions:
+          type: object
+          properties:
+            labelingServiceYn:
+              type: string
+              description: Whether labeling service is required. Must be 'Y' or 'N'.
+              enum:
+                - 'Y'
+                - 'N'
+            rePackingServiceYn:
+              type: string
+              description: Whether re-packing service is required. Must be 'Y' or 'N'.
+              enum:
+                - 'Y'
+                - 'N'
+        promotionCode:
+          type: string
+          description: The promotion code.
+      required:
+        - service
+        - originInfo
+        - destinationInfo
+        - cargoInfo
+        - additionalOptions
+        - promotionCode
+    SuccessfulResponse:
+      type: object
+      properties:
+        internationalTransportationCost:
+          type: object
+          properties:
+            freightCharge:
+              type: number
+              description: The basic fee required for international transportation.
+            promotionDC:
+              type: number
+              description: >-
+                The discount amount that can be obtained by using a promotion
+                code.
+            transportationSubTotal:
+              type: number
+              description: >-
+                The subtotal of international transportation costs (Freight
+                charge - Promotion DC).
+          required:
+            - freightCharge
+            - promotionDC
+            - transportationSubTotal
+        originCost:
+          type: object
+          properties:
+            wharfagePortCharge:
+              type: number
+              description: The wharf and port usage fee at the origin.
+            truckFreightCharge:
+              type: number
+              description: The truck transportation cost.
+            terminalHandlingCharge:
+              type: number
+              description: The terminal handling cost.
+            handlingFee:
+              type: number
+              description: The handling fee.
+            documentCharge:
+              type: number
+              description: The document processing fee.
+            amsCharge:
+              type: number
+              description: The fee required for pre-declaration.
+            containerSealCharge:
+              type: number
+              description: The container seal fee.
+            originSubTotal:
+              type: number
+              description: The subtotal of the origin cost.
+          required:
+            - wharfagePortCharge
+            - truckFreightCharge
+            - terminalHandlingCharge
+            - handlingFee
+            - documentCharge
+            - amsCharge
+            - containerSealCharge
+            - originSubTotal
+        destinationCost:
+          type: object
+          properties:
+            wharfagePortCharge:
+              type: number
+              description: The wharf and port usage fee at the destination.
+            truckFreightCharge:
+              type: number
+              description: The truck transportation cost.
+            terminalHandlingCharge:
+              type: number
+              description: The terminal handling cost.
+            handlingFee:
+              type: number
+              description: The handling fee.
+            documentCharge:
+              type: number
+              description: The document processing fee.
+            destinationSubTotal:
+              type: number
+              description: The subtotal of the destination cost.
+          required:
+            - wharfagePortCharge
+            - truckFreightCharge
+            - terminalHandlingCharge
+            - handlingFee
+            - documentCharge
+            - destinationSubTotal
+        additionalInfo:
+          type: object
+          properties:
+            currency:
+              type: string
+              description: The currency unit of this quote.
+            expectedDepartureDate:
+              type: string
+              description: The expected departure date.
+            expectedLeadTime:
+              type: number
+              description: The expected lead time.
+            totalCharge:
+              type: number
+              description: 'The total fee, which is the sum of all subtotals.'
+            quoteId:
+              type: string
+              description: The unique identifier of this quote.
+            quoteLinkUrl:
+              type: string
+              description: The link to this quote.
+            EXTRA_INFORMATION_TO_ASSISTANT:
+              type: string
+              description: Extra instructions for the assistant.
+          required:
+            - currency
+            - expectedDepartureDate
+            - expectedLeadTime
+            - totalCharge
+            - quoteId
+            - quoteLinkUrl
+            - EXTRA_INFORMATION_TO_ASSISTANT
+      required:
+        - internationalTransportationCost
+        - originCost
+        - destinationCost
+        - additionalInfo
+    FailedResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message.
+        additionalInfo:
+          type: object
+          properties:
+            requiredFieldEmpty:
+              type: array
+              items:
+                type: object
+                properties:
+                  field:
+                    type: string
+                    description: The name of the field that is missing.
+                  validValues:
+                    type: array
+                    items:
+                      type: string
+                    description: The valid values for the field.
+                required:
+                  - field
+                  - validValues
+            constraintViolations:
+              type: array
+              items:
+                type: object
+                properties:
+                  field:
+                    type: string
+                    description: The name of the field that violated a constraint.
+                  validValues:
+                    type: array
+                    items:
+                      type: string
+                    description: The valid values for the field.
+                required:
+                  - field
+                  - validValues
+          required:
+            - requiredFieldEmpty
+            - constraintViolations
+        EXTRA_INFORMATION_TO_ASSISTANT:
+          type: string
+          description: Extra instructions for the assistant.
+      required:
+        - message
+        - additionalInfo
+        - EXTRA_INFORMATION_TO_ASSISTANT
+  securitySchemes: {}
+info:
+  title: GPT Plugin API for Logistics Services
+  description: >
+    This API, leveraging GPT, facilitates logistics services by understanding
+    user needs and providing suitable solutions.  It generates quotes, allows
+    direct reservations, and streamlines logistics operations,  making it an
+    essential tool for businesses and individuals.
+  version: '1.0'
+paths:
+  /gpt-interface:
+    post:
+      operationId: gpt-interface
+      summary: Interact with GPT for logistics quote and booking
+      description: >
+        This endpoint interacts with GPT to provide logistics services,
+        including obtaining quotes and making bookings.  It processes user input
+        and returns context-appropriate responses, such as specific shipping
+        quotes, shipment bookings,  or answers to logistics queries.
+      tags:
+        - GPT
+        - Logistics
+        - Quote
+        - Booking
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessfulResponse'
+        '400':
+          description: Failed Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'

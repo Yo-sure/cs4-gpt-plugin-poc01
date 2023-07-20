@@ -31,12 +31,16 @@ provider:
 plugins:
   - serverless-offline
   - serverless-cloudfront-invalidate
+  - serverless-openapi-documentation
 
 custom:
+  documentation: ${file(serverless.doc.yml):documentation}
   cloudfrontInvalidate:
     - distributionIdKey: "CloudFrontDistributionId"
       items:
         - "/.well-known/ai-plugin.json"
+        - "/api-spec/openapi.yml"
+
 
 functions:
   get-quote:
@@ -55,6 +59,7 @@ functions:
           path: gpt-interface
           method: post
           cors: true
+          documentation: ${file(serverless.doc.yml):endpoints.gpt-interface}
 
 resources:
   Resources:

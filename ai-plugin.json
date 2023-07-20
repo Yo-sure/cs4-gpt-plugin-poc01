@@ -9,7 +9,7 @@
   },
   "api": {
     "type": "openapi",
-    "url": "http://localhost:3333/openapi.yaml"
+    "url": "https://awithi.co/api-spec/openapi.yml"
   },
   "logo_url": "https://awithi.co/logo.png",
   "contact_email": "jaewng.yun@samsung.com",

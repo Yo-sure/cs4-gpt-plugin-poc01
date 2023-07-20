@@ -1,0 +1,126 @@
+{
+  "type": "object",
+  "properties": {
+    "internationalTransportationCost": {
+      "type": "object",
+      "properties": {
+        "freightCharge": {
+          "type": "number",
+          "description": "The basic fee required for international transportation."
+        },
+        "promotionDC": {
+          "type": "number",
+          "description": "The discount amount that can be obtained by using a promotion code."
+        },
+        "transportationSubTotal": {
+          "type": "number",
+          "description": "The subtotal of international transportation costs (Freight charge - Promotion DC)."
+        }
+      },
+      "required": [ "freightCharge", "promotionDC", "transportationSubTotal" ]
+    },
+    "originCost": {
+      "type": "object",
+      "properties": {
+        "wharfagePortCharge": {
+          "type": "number",
+          "description": "The wharf and port usage fee at the origin."
+        },
+        "truckFreightCharge": {
+          "type": "number",
+          "description": "The truck transportation cost."
+        },
+        "terminalHandlingCharge": {
+          "type": "number",
+          "description": "The terminal handling cost."
+        },
+        "handlingFee": {
+          "type": "number",
+          "description": "The handling fee."
+        },
+        "documentCharge": {
+          "type": "number",
+          "description": "The document processing fee."
+        },
+        "amsCharge": {
+          "type": "number",
+          "description": "The fee required for pre-declaration."
+        },
+        "containerSealCharge": {
+          "type": "number",
+          "description": "The container seal fee."
+        },
+        "originSubTotal": {
+          "type": "number",
+          "description": "The subtotal of the origin cost."
+        }
+      },
+      "required": [ "wharfagePortCharge", "truckFreightCharge", "terminalHandlingCharge", "handlingFee", "documentCharge", "amsCharge", "containerSealCharge", "originSubTotal" ]
+    },
+    "destinationCost": {
+      "type": "object",
+      "properties": {
+        "wharfagePortCharge": {
+          "type": "number",
+          "description": "The wharf and port usage fee at the destination."
+        },
+        "truckFreightCharge": {
+          "type": "number",
+          "description": "The truck transportation cost."
+        },
+        "terminalHandlingCharge": {
+          "type": "number",
+          "description": "The terminal handling cost."
+        },
+        "handlingFee": {
+          "type": "number",
+          "description": "The handling fee."
+        },
+        "documentCharge": {
+          "type": "number",
+          "description": "The document processing fee."
+        },
+        "destinationSubTotal": {
+          "type": "number",
+          "description": "The subtotal of the destination cost."
+        }
+      },
+      "required": [ "wharfagePortCharge", "truckFreightCharge", "terminalHandlingCharge", "handlingFee", "documentCharge", "destinationSubTotal" ]
+    },
+    "additionalInfo": {
+      "type": "object",
+      "properties": {
+        "currency": {
+          "type": "string",
+          "description": "The currency unit of this quote."
+        },
+        "expectedDepartureDate": {
+          "type": "string",
+          "description": "The expected departure date."
+        },
+        "expectedLeadTime": {
+          "type": "number",
+          "description": "The expected lead time."
+        },
+        "totalCharge": {
+          "type": "number",
+          "description": "The total fee, which is the sum of all subtotals."
+        },
+        "quoteId": {
+          "type": "string",
+          "description": "The unique identifier of this quote."
+        },
+        "quoteLinkUrl": {
+          "type": "string",
+          "description": "The link to this quote."
+        },
+        "EXTRA_INFORMATION_TO_ASSISTANT": {
+          "type": "string",
+          "description": "Extra instructions for the assistant."
+        }
+      },
+      "required": [ "currency", "expectedDepartureDate", "expectedLeadTime", "totalCharge", "quoteId", "quoteLinkUrl", "EXTRA_INFORMATION_TO_ASSISTANT" ]
+    }
+  },
+  "required": [ "internationalTransportationCost", "originCost", "destinationCost", "additionalInfo" ]
+}

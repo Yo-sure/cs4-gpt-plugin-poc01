@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "properties": {
+    "service": {
+      "type": "string",
+      "description": "The type of service. Must be one of 'air', 'ocean', 'express'.",
+      "enum": [ "air", "ocean", "express" ]
+    },
+    "originInfo": {
+      "type": "object",
+      "properties": {
+        "origin": {
+          "type": "string",
+          "description": "The origin port or city.",
+          "enum": [ "CNSHA", "DEHAM", "KRPUS", "NLRTM", "USLGB" ]
+        },
+        "departureRequestDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The requested departure date."
+        },
+        "originTruckingServiceYn": {
+          "type": "string",
+          "description": "Whether trucking service at origin is required. Must be 'Y' or 'N'.",
+          "enum": [ "Y", "N" ]
+        }
+      },
+      "required": [ "origin", "departureRequestDate", "originTruckingServiceYn" ]
+    },
+    "destinationInfo": {
+      "type": "object",
+      "properties": {
+        "destination": {
+          "type": "string",
+          "description": "The destination port or city.",
+          "enum": [ "CNSHA", "DEHAM", "KRPUS", "NLRTM", "USLGB", "others" ]
+        },
+        "destinationTruckingServiceYn": {
+          "type": "string",
+          "description": "Whether trucking service at destination is required. Must be 'Y' or 'N'.",
+          "enum": [ "Y", "N" ]
+        }
+      },
+      "required": [ "destination", "destinationTruckingServiceYn" ]
+    },
+    "cargoInfo": {
+      "type": "object",
+      "properties": {
+        "containerType": {
+          "type": "string",
+          "description": "The type of container. Must be one of '20FTNormalDry', '40FTNormalDry', '40FTHighCubic'.",
+          "enum": [ "20FTNormalDry", "40FTNormalDry", "40FTHighCubic" ]
+        },
+        "quantity": {
+          "type": "number",
+          "description": "The quantity of containers."
+        },
+        "commodityType": {
+          "type": "string",
+          "description": "The type of commodity. Must be one of 'Furniture', 'HomeAppliance', 'ConstructionMaterials', 'Semiconductor', 'Others'.",
+          "enum": [ "Furniture", "HomeAppliance", "ConstructionMaterials", "Semiconductor", "Others" ]
+        },
+        "dangerousGoodsYn": {
+          "type": "string",
+          "description": "Whether the goods are dangerous. Must be 'Y' or 'N'.",
+          "enum": [ "Y", "N" ]
+        }
+      },
+      "required": [ "containerType", "quantity", "commodityType", "dangerousGoodsYn" ]
+    },
+    "additionalOptions": {
+      "type": "object",
+      "properties": {
+        "labelingServiceYn": {
+          "type": "string",
+          "description": "Whether labeling service is required. Must be 'Y' or 'N'.",
+          "enum": [ "Y", "N" ]
+        },
+        "rePackingServiceYn": {
+          "type": "string",
+          "description": "Whether re-packing service is required. Must be 'Y' or 'N'.",
+          "enum": [ "Y", "N" ]
+        }
+      }
+    },
+    "promotionCode": {
+      "type": "string",
+      "description": "The promotion code."
+    }
+  },
+  "required": [ "service", "originInfo", "destinationInfo", "cargoInfo", "additionalOptions", "promotionCode" ]
+}
