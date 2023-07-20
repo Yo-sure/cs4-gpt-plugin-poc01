@@ -150,7 +150,10 @@ function validateRequiredFields(body) {
 
     if (value === undefined || value === '') {
       // 필수 필드가 누락되었거나 빈 문자열인 경우, 누락된 필드 목록에 추가합니다.
-      missingFields.push(field);
+      missingFields.push({
+        field,
+        validValues: CONSTRAINTS[field] || 'Any non-empty value',
+      });
     }
   });
 
