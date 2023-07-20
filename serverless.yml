@@ -23,6 +23,10 @@ provider:
             - dynamodb:Query
             - dynamodb:Scan
           Resource: !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/cs4-gpt-plugin-poc01-quote"
+        - Effect: Allow
+          Action:
+            - lambda:InvokeFunction
+          Resource: !Sub "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:cs4-gpt-plugin-poc01-dev-get-quote"
 
 plugins:
   - serverless-offline
@@ -42,18 +46,15 @@ functions:
           path: quote
           method: post
           cors: true
-    iam:
-      role:
-        statements:
-          - Effect: Allow
-            Action:
-              - dynamodb:PutItem
-              - dynamodb:GetItem
-              - dynamodb:UpdateItem
-              - dynamodb:DeleteItem
-              - dynamodb:Query
-              - dynamodb:Scan
-            Resource: !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/cs4-gpt-plugin-poc01-tariff"
+    role: !Sub "arn:aws:iam::${AWS::AccountId}:role/cs4-gpt-plugin-poc01-dev-ap-northeast-2-lambdaGetQuoteRole"
+
+  gpt-interface:
+    handler: src/gptInterface.handler
+    events:
+      - http:
+          path: gpt-interface
+          method: post
+          cors: true
 
 resources:
   Resources:

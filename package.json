@@ -2,7 +2,8 @@
   "name": "cs4-gpt-plugin-poc01",
   "version": "1.0.0",
   "scripts": {
-    "offline": "sls offline start"
+    "offline": "sls offline start",
+    "deploy": "sls deploy"
   },
   "devDependencies": {
     "eslint": "^8.45.0",

@@ -159,7 +159,12 @@ function validateRequiredFields(body) {
 }
 
 module.exports.handler = async (event) => {
-  const requestBody = JSON.parse(event.body);
+  let requestBody;
+  if (event.isGPT) {
+    requestBody = event;
+  } else {
+    requestBody = JSON.parse(event.body);
+  }
 
   // 필수 필드 중 누락된 것을 찾습니다.
   const requiredFieldEmpty = validateRequiredFields(requestBody);

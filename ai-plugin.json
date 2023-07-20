@@ -11,7 +11,7 @@
     "type": "openapi",
     "url": "http://localhost:3333/openapi.yaml"
   },
-  "logo_url": "http://localhost:3333/logo.png",
+  "logo_url": "https://awithi.co/logo.png",
   "contact_email": "jaewng.yun@samsung.com",
-  "legal_info_url": "https://www.cellosquare.com"
+  "legal_info_url": "https://www.cello-square.com/kr-ko/policy/service-terms-and-conditions.do"
 }
