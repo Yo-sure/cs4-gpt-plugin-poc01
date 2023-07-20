@@ -120,7 +120,6 @@ async function calculateQuote(requestBody) {
 
   // 요금을 계산합니다.
   const quote = calculateWithTariff(requestBody, tariffInfo);
-
   return quote;
 }
 
@@ -204,6 +203,7 @@ module.exports.handler = async (event) => {
         body: JSON.stringify({
           message: 'Quote created successfully',
           quote,
+          distance: DISTANCE_LOOKUP_TABLE[requestBody.originInfo.origin][requestBody.destinationInfo.destination],
         }),
       };
     } catch (err) {
