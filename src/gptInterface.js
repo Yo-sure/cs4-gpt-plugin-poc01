@@ -6,33 +6,7 @@ const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
 const EXTRA_INFORMATION_TO_ASSISTANT = 'In every response, the Assistant must always start with an explanation of the default parameters used in quote.'
     + 'The Assistant should also always inform the user that they can adjust these parameters to get a more accurate quote.\n'
-    + 'Assistant explains the logic for generating the quote, detailing each cost and what it means:\n'
-    + 'internationalTransportationCost: {\n'
-    + '  freightCharge: basic fee required for international transportation.\n'
-    + '  promotionDC: discount amount that can be obtained by using a promotion code\n'
-    + '  transportationSubTotal: subtotal of international transportation costs. (freightCharge - promotionDC)\n'
-    + '}\n'
-    + 'originCost/destinationCost: {\n'
-    + '  wharfagePortCharge: wharf and port usage fee.\n'
-    + '  truckFreightCharge: truck transportation cost.\n'
-    + '  terminalHandlingCharge.\n'
-    + '  handlingFee.\n'
-    + '  documentCharge: document processing fee.\n'
-    + '  amsCharge: fee required for pre-declaration.\n'
-    + '  containerSealCharge.\n'
-    + '  originSubTotal: subtotal of the origin cost.\n'
-    + '  destinationSubTotal: subtotal of the destination cost.\n'
-    + '}\n'
-    + '\n'
-    + 'additionalInfo: {\n'
-    + '  currency: currency unit of this quote.\n'
-    + '  expectedDepartureDate.\n'
-    + '  expectedLeadTime.\n'
-    + '  totalCharge: total fee, which is the sum of all subtotals.\n'
-    + '  quoteId.\n'
-    + '  quoteLinkUrl: link to this quote booking.\n'
-    + '}\n'
-    + '\n'
+    + 'Assistant explains the logic for generating the quote, detailing each cost and what it means\n'
     + 'If a required field is missing or a constraint is violated, the assistant must notify the user. '
     + 'If you encounter these issues, we can provide more information on how to fill in the field or satisfy the constraint.\n\n'
     + "In this case, please refer to the 'requiredFieldEmpty' and 'constraintViolations' fields. "
@@ -100,8 +74,13 @@ exports.handler = async (event) => {
         body: JSON.stringify(responseForGPT),
       };
     }
-    responseData.EXTRA_INFORMATION_TO_ASSISTANT = EXTRA_INFORMATION_TO_ASSISTANT;
-    return responseData;
+    const responseDataBody = JSON.parse(responseData.body);
+    responseDataBody.EXTRA_INFORMATION_TO_ASSISTANT = EXTRA_INFORMATION_TO_ASSISTANT;
+
+    return {
+      statusCode: responseData.statusCode,
+      body: JSON.stringify(responseDataBody),
+    };
   } catch (error) {
     console.error('Error calling get-quote API:', error);
     return {
