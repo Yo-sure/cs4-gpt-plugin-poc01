@@ -1,4 +1,42 @@
 openapi: 3.0.0
+info:
+  title: GPT Plugin API for Logistics Services
+  description: >
+    This API, leveraging GPT, facilitates logistics services by understanding
+    user needs and providing suitable solutions.  It generates quotes, allows
+    direct reservations, and streamlines logistics operations,  making it an
+    essential tool for businesses and individuals.
+  version: '1.0'
+servers:
+  - url: https://api.awithi.co
+paths:
+  /gpt-interface:
+    post:
+      operationId: gpt-interface
+      summary: Interact with GPT for logistics quote and booking
+      description: >
+        This endpoint interacts with GPT to provide logistics services,
+        including obtaining quotes and making bookings.  It processes user input
+        and returns context-appropriate responses, such as specific shipping
+        quotes, shipment bookings,  or answers to logistics queries.
+      tags:
+        - GPT
+        - Logistics
+        - Quote
+        - Booking
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessfulResponse'
+        '400':
+          description: Failed Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
 components:
   schemas:
     LogisticsServiceRequest:
@@ -302,39 +340,3 @@ components:
         - additionalInfo
         - EXTRA_INFORMATION_TO_ASSISTANT
   securitySchemes: {}
-info:
-  title: GPT Plugin API for Logistics Services
-  description: >
-    This API, leveraging GPT, facilitates logistics services by understanding
-    user needs and providing suitable solutions.  It generates quotes, allows
-    direct reservations, and streamlines logistics operations,  making it an
-    essential tool for businesses and individuals.
-  version: '1.0'
-paths:
-  /gpt-interface:
-    post:
-      operationId: gpt-interface
-      summary: Interact with GPT for logistics quote and booking
-      description: >
-        This endpoint interacts with GPT to provide logistics services,
-        including obtaining quotes and making bookings.  It processes user input
-        and returns context-appropriate responses, such as specific shipping
-        quotes, shipment bookings,  or answers to logistics queries.
-      tags:
-        - GPT
-        - Logistics
-        - Quote
-        - Booking
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SuccessfulResponse'
-        '400':
-          description: Failed Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FailedResponse'
