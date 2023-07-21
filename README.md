@@ -1,7 +1,7 @@
 # CS4-GPT-Plugin-POC01
 이 프로젝트는 첼로스퀘어 견적 플러그인에 대한 Proof of Concept (POC)입니다.
 
-## 사용된 서버리 플러그인
+## 사용된 서버리스 플러그인
 이 POC에서는 다음 세 가지 서버리스 플러그인을 사용했습니다.
 
 #### 1. serverless-cloudfront-invalidate
