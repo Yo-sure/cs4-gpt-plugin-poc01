@@ -1,5 +1,6 @@
 const AWS = require('aws-sdk');
 const { v4: uuidv4 } = require('uuid');
+const validFormat = require('../models/LogisticsServiceRequest.json');
 
 const lambda = new AWS.Lambda();
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
@@ -75,6 +76,8 @@ exports.handler = async (event) => {
       };
     }
     const responseDataBody = JSON.parse(responseData.body);
+    responseDataBody.message = "Strict adherence to the 'validateFormat' property is mandatory when sending your request. Ensure your request includes all required information in the correct format. Non-compliance is not acceptable. Please refer to the 'validateFormat' property and retry with the correct format.";
+    responseDataBody.validateFormat = validFormat;
     responseDataBody.EXTRA_INFORMATION_TO_ASSISTANT = EXTRA_INFORMATION_TO_ASSISTANT;
 
     return {

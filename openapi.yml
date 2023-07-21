@@ -24,6 +24,12 @@ paths:
         - Logistics
         - Quote
         - Booking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogisticsServiceRequest'
       responses:
         '200':
           description: Successful Response

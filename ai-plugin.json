@@ -1,8 +1,8 @@
 {
   "schema_version": "v1",
   "name_for_human": "CS4 B2B Logistics Plugin",
-  "name_for_model": "cs4-gpt-plugin",
-  "description_for_human": "A plugin for CS4's B2B logistics platform. It helps with providing quotes, making reservations, and tracking execution of logistics services.",
+  "name_for_model": "CS4_GPT_Plugin_POC_v1",
+  "description_for_human": "A plugin for CS4's B2B logistics platform. It helps with providing quotes, making reservations of logistics services.",
   "description_for_model": "Assist with CS4's B2B logistics platform. Provide quotes based on user's input, help with making reservations, and provide updates on execution of logistics services.",
   "auth": {
     "type": "none"
