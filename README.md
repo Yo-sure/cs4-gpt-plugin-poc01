@@ -1,8 +1,7 @@
 # CS4-GPT-Plugin-POC01
-
 이 프로젝트는 첼로스퀘어 견적 플러그인에 대한 Proof of Concept (POC)입니다.
 
-## 사용된 서버리스 플러그인
+## 사용된 서버리 플러그인
 이 POC에서는 다음 세 가지 서버리스 플러그인을 사용했습니다.
 
 #### 1. serverless-cloudfront-invalidate
@@ -19,3 +18,10 @@ ai-plugin.json, openapi.yml을 s3에 게시했는데, 플러그인 데브툴 사
 ## 연락처
 문의사항이 있으신 경우 아래의 이메일로 연락 주시기 바랍니다.
 - Email: jaewng.yun@samsung.com
+
+##### 비고
+- 짧은 시간동안 P.O.C 검증만을 위해 작성된 코드여서 정리가 부족합니다.
+- calculateDistance 는 룩업테이블을 만들기 위해 생성한 일회성 js파일입니다.
+- dynamoDB의 실제값이 poc-tariff-dml에 작성된 값과 일부 다를 수 있습니다. (매뉴얼 조작)
+- aws s3 upload는 aws cli로 수행하였습니다.
+- models와 serverless.doc.yml의 정보들은 serverless-openapi-document 사용을 위해 작성되었으나, 일부 openapi.yml의 변경으로 재생성시, 값이 틀어질 수 있습니다.(매뉴얼 조작)
