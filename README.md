@@ -25,3 +25,5 @@ ai-plugin.json, openapi.yml을 s3에 게시했는데, 플러그인 데브툴 사
 - dynamoDB의 실제값이 poc-tariff-dml에 작성된 값과 일부 다를 수 있습니다. (매뉴얼 조작)
 - aws s3 upload는 aws cli로 수행하였습니다.
 - models와 serverless.doc.yml의 정보들은 serverless-openapi-document 사용을 위해 작성되었으나, 일부 openapi.yml의 변경으로 재생성시, 값이 틀어질 수 있습니다.(매뉴얼 조작)
+  -> serverless-openapi-documentation 은 models와 serverless.yml, serverless.doc.yml을 참고해서 openapi.yml파일을 만드는 동작을 수행합니다. (https://www.serverless.com/plugins/serverless-openapi-documentation)
+  -> 생성하고 변경해야할 부분이 있어서, openapi.yml을 일부 재작성했습니다.
