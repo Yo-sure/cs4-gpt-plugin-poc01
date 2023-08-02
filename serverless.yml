@@ -29,12 +29,21 @@ provider:
           Resource: !Sub "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:cs4-gpt-plugin-poc01-dev-get-quote"
 
 plugins:
+  - serverless-layers
   - serverless-offline
   - serverless-cloudfront-invalidate
   - serverless-openapi-documentation
 
 custom:
+  serverless-layers:
+    layersDeploymentBucket: cs4-gpt-plugin-poc01-dev-libs-layers-bucket
+    common:
+      dependenciesPath: ./package.json
+      compatibleRuntimes:
+        - nodejs18.x
+
   documentation: ${file(serverless.doc.yml):documentation}
+
   cloudfrontInvalidate:
     - distributionIdKey: "CloudFrontDistributionId"
       items:
