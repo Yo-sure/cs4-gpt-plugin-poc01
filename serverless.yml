@@ -98,9 +98,7 @@ resources:
         DistributionConfig:
           Enabled: true
           Origins:
-            - DomainName: !GetAtt
-                - CS4GPTPluginBucket
-                - DomainName
+            - DomainName: !GetAtt CS4GPTPluginBucket.DomainName
               Id: S3Origin
               S3OriginConfig:
                 OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${CloudFrontOAI}
