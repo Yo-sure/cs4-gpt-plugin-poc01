@@ -101,6 +101,10 @@ components:
             - destinationTruckingServiceYn
         cargoInfo:
           type: object
+          description: >-
+            In the case of 'commodityType' property and 'dangerousGoodsYn' property, 
+            write considering the correlation. 
+            If commodity is 'gunpowder' or 'battery', 'dangerousGoodsYn' must be 'Y'.
           properties:
             containerType:
               type: string
@@ -115,8 +119,8 @@ components:
             commodityType:
               type: string
               description: >- 
-                The type of commodity. 
                 Must be one of 'Furniture', 'HomeAppliance', 'ConstructionMaterials', 'Semiconductor', 'Others'.
+                For 'gunpowder' and 'battery', mark 'dangerousGoodsYn' property as 'Y'.
               enum:
                 - Furniture
                 - HomeAppliance
@@ -126,10 +130,8 @@ components:
             dangerousGoodsYn:
               type: string
               description: >- 
-                Whether the goods are dangerous. Must be 'Y' or 'N'.
-                In general, for goods that are treated as dangerous goods in transit, enter the letter 'Y'.
-                If it is difficult to determine, ask the user if it is a dangerous commodity. 
-                In the case of 'gunpowder' and 'battery', MUST treat it with 'Y'.
+                Whether the commodityType is dangerous. Must be one of 'Y' or 'N'
+                For 'gunpowder' and 'battery', mark as 'Y'. If unsure commodityType, ask user.
               enum:
                 - 'Y'
                 - 'N'
