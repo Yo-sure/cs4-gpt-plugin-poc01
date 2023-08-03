@@ -50,7 +50,7 @@ components:
       properties:
         service:
           type: string
-          description: 'The type of service. Must be one of ''air'', ''ocean'', ''express''.'
+          description: 'The type of service. Must be one of ''air(항공)'', ''ocean(해상)'', ''express(특송)''.'
           enum:
             - air
             - ocean
@@ -268,7 +268,7 @@ components:
               description: The expected departure date.
             expectedLeadTime:
               type: number
-              description: The expected lead time.
+              description: The expected lead time(days, not hours).
             totalCharge:
               type: number
               description: 'The total fee, which is the sum of all subtotals.'
