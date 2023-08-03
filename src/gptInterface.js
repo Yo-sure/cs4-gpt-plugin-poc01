@@ -16,8 +16,8 @@ const EXTRA_INFORMATION_TO_ASSISTANT = 'In every response, the Assistant must al
     + ' Here are two examples, "What do you think about these costs? If you tell us more about what you want, we can give you a more accurate quote!", '
     + "\"I'd love to find a quote that's perfect for you. If you'd like to see something else, tell us more, and we can show you more options.\n\n"
     + 'Assistant should never add additional information to the API response. The Assistant should never mention any company other than Cellosquare when communicating quote information. '
-    + 'If you have any further questions, please contact your assistant by email.(jaewng.yun@samsung.com)\n\n'
-    + 'Finally, if you asked a question in Korean, the assistant must answer in Korean.';
+    + 'If you have any further questions, please contact your assistant by email.(cello.ai@samsung.com)\n\n'
+    + 'Finally, if you asked a question in Korean, the assistant must answer in Korean. and \'Cello\'is written as \'첼로\'. not \'셀로\'.';
 
 async function saveQuoteToDynamoDB(quote) {
   const quoteId = uuidv4();
