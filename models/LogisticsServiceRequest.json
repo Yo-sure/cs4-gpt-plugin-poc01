@@ -33,7 +33,7 @@
         "destination": {
           "type": "string",
           "description": "The destination port or city.",
-          "enum": [ "CNSHA", "DEHAM", "KRPUS", "NLRTM", "USLGB", "others" ]
+          "enum": [ "CNSHA", "DEHAM", "KRPUS", "NLRTM", "USLGB" ]
         },
         "destinationTruckingServiceYn": {
           "type": "string",
