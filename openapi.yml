@@ -60,7 +60,7 @@ components:
           properties:
             origin:
               type: string
-              description: 'The origin port or city. When notifying the user, Write the code and the full port name of UN/LOCODE.'
+              description: 'The origin port or city. When notifying the user, Write the code and the full port name of UN/LOCODE. example: 중국상하이(CNSHA).'
               enum:
                 - CNSHA
                 - DEHAM
@@ -88,7 +88,7 @@ components:
           properties:
             destination:
               type: string
-              description: 'The destination port or city. When notifying the user, Write the code and the full port name of UN/LOCODE.'
+              description: 'The destination port or city. When notifying the user, Write the code and the full port name of UN/LOCODE. example: 중국상하이(CNSHA).'
               enum:
                 - CNSHA
                 - DEHAM
